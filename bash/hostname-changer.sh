@@ -21,3 +21,8 @@
 # If that hostname is not the current hostname, change it using the hostnamectl command and
 #     tell the user you changed the current hostname and they should reboot to make sure the new name takes full effect
 #e.g. hostnamectl set-hostname $newname
+hostname=$HOSTNAME 
+echo "Your current hostname is in a human friendly way"
+read -p "Enter your student number: " stnum
+echo "Your student number is: " $stnum
+
