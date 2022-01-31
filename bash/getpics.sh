@@ -1,5 +1,5 @@
-cs.shO#!/bin/bash
-#
+#!/bin/bash
+#getpics.sh
 # this script gets some picture files for our personal web pages, which are kept in public_html
 # the pictures are put into a subdirectory of public_html named pics
 # it does some error checking
