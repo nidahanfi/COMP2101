@@ -17,15 +17,17 @@
 ###############
 # Variables   #
 ###############
-title="Overlord"
-myname="dennis"
-hostname="myhostname"
 
-###############
-# Main        #
-###############
-cat <<EOF
-
-Welcome to planet $hostname, "$title $myname!"
-
-EOF
+title='%A'
+read -p "Enter your username: " user
+echo "Thank you for your username $user"
+echo ""
+read -p "Enter your hostname: " hostname
+echo "Your hostname is: $hostname"
+echo ""
+now="$(date)"
+echo "Current date and time is %s\n" "$now"
+echo $now
+echo $title
+echo "Welcome $user, Today on $now you created hostname as $hostname"
+echo ""
