@@ -1,6 +1,5 @@
-mproveddice.sh
-O!/bin/bash
-#
+#!/bin/bash
+#improveddice.sh
 # this script rolls a pair of six-sided dice and displays both the rolls
 #
 
@@ -17,8 +16,18 @@ O!/bin/bash
 
 # Tell the user we have started processing
 echo "Rolling..."
+for i in {1..5}
+do
+echo "You rolled a..."
+echo $(($RANDOM % 6 + 1))
+done
 # roll the dice and save the results
 die1=$(( RANDOM % 6 + 1))
 die2=$(( RANDOM % 6 + 1 ))
+total=$((die1 + die2))
+echo "The sum of the dice is: " $total
+average=$((total/2))
+echo "The average of the dice is: " $average
+
 # display the results
 echo "Rolled $die1, $die2"
