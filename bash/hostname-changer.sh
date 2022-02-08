@@ -21,8 +21,38 @@
 # If that hostname is not the current hostname, change it using the hostnamectl command and
 #     tell the user you changed the current hostname and they should reboot to make sure the new name takes full effect
 #e.g. hostnamectl set-hostname $newname
-hostname=$HOSTNAME 
-echo "Your current hostname is in a human friendly way"
-read -p "Enter your student number: " stnum
-echo "Your student number is: " $stnum
+#STEP9
+hn=$(hostname)
+
+#STEP11
+echo $hn
+
+#STEP13
+echo "What is your student number?"
+read number
+
+#STEP15
+variable="pc$number"
+
+#STEP17
+oldname=$(awk '/127.0.1.1/ {print $2}' /etc/hosts)
+newname=$variable
+if [ $oldname == $newname ]
+then
+	echo "Hostname already exists in /etc/hosts file."
+else
+	sudo sed -i "s/$oldname/$newname/" /etc/hosts
+	echo "Successfully changed the hostname in /etc/hosts file."
+fi
+
+#STEP21	
+CUR_HOSTNAME=$(cat /etc/hostname)
+NEW_HOSTNAME=$variable
+#Change the hostname in /etc/hostname
+if [ $CUR_HOSTNAME == $NEW_HOSTNAME ]
+then
+ 	echo "Hostname already exists in /etc/hostname." 
+else 
+ 	hostnamectl set-hostname $NEW_HOSTNAME
+	echo "Current hostname changed successfully. Please reboot the system for changing name completely."
 
