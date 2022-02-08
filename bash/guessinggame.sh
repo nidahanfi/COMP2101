@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #
 # This script implements a guessing game
 # it will pick a secret number from 1 to 10
