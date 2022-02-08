@@ -1,6 +1,7 @@
 #!/bin/bash
+gin-welcome.sh
 
-#login-message.sh
+#welcome-message.sh
 # This script produces a dynamic welcome message
 # it should look like
 #   Welcome to planet hostname, title name!
@@ -19,42 +20,16 @@
 # Variables   #
 ###############
 
-#title='%A'
-#read -p "Enter your username: " user
-#echo "Thank you for your username $user"
-#echo ""
-#read -p "Enter your hostname: " hostname
-#echo "Your hostname is: $hostname"
-#echo ""
-#now="$(date)"
-#echo "Current date and time is %s\n" "$now"
-#echo $now
-#echo $title
-#echo "Welcome $user, Today on $now you created hostname as $hostname"
-#echo ""
-###############
-# Variables   #
-###############
-title="Overlord"
-myname="dennis"
-hostname=$(hostname)
-
-###############
-# Main        #
-###############
-#cat <<EOF
-
-#Welcome to planet $hostname, "$title $myname!"
-
-#EOF
-read -p "Please input your username:" USER
-# Improve this script by adding some time and day of the week information to the welcome message
-#   Use a format like this:
-#   It is HH:MM AM on weekday.
-HH=$(date +%H)
-MM=$(date +%M)
-APM=$(date +%p)
-weekday=$(date +%A)
-
-
-echo "Welcome to planet $USER!" |cowsay
+title='%A'
+read -p "Enter your username: " user
+echo "Thank you for your username $user"
+echo ""
+read -p "Enter your hostname: " hostname
+echo "Your hostname is: $hostname"
+echo ""
+now="$(date)"
+echo "Current date and time is %s\n" "$now"
+echo $now
+echo $title
+echo "Welcome $user, Today on $now you created hostname as $hostname"
+echo ""
