@@ -6,33 +6,32 @@
 # /dev/null so we do not get errors for inaccessible directories and files
 # the identified files are sorted by their owner
 
-# Task 1 for the exercise is to modify it to also display the 12 largest regular files in the system, sorted by their sizes
-# The listing should
-#    only have the file name, owner, and size of the 12 largest files
-#    show the size in human friendly format
-#    be displayed after the listing of setuid files
-#   should have its own title, similar to how the setuid files listing has a title
+# Task 1 for the exercise is to modify it to also find and display the setgid files in a second listing
+# The second listing should display after the setuid file list, and be formatted similar to the
+# setuid file list including having a title
+# use the find command to find files of the right type and with the right permissions, and an error redirect to
+# /dev/null so we do not get errors for inaccessible directories and files
+# the identified files should be sorted by their group
+
+# Task 2 for the exercise is to modify it to also display the 10 largest regular files in the system, sorted by their sizes
+# The listing should only have the file name, owner, and size in MBytes and be displayed after the listings of
+# setuid and setgid files and should have its own title
 # use the find command to generate the list of files with their sizes, with an error redirect to /dev/null
 # use cut or awk to display only the output desired
 
 echo "Setuid files:"
 echo "============="
-find / -type f -executable -perm -4000 -ls 2>/dev/null | sort -k 5
+find / -type f -executable -perm -4000 -ls 2>/dev/null | sort -k 3
 echo ""
 
-# for the task, add
-# commands to display a title
-# commands to make a list of the 12 biggest files
-# sort/format whatever to display the list properly
-#Task 1
-echo "Setuid files:"
-echo ""
-find / -type f -executable -perm -2000 -ls 2>/dev/null | sort -k 3 | awk '{print $5,$3,$11}'
+echo "Gid Files:"
+echo "==========="
+find / -type f -executable -perm -2000 -ls 2>/dev/null | sort -k 4
 echo ""
 
-echo "12 largest files in the system:"
-#ls / -S -R -l --block-size=M  2>/dev/null| grep -v '^total'|grep -v '/:'| head^C
-#ls / -R  -lh  2>/dev/null |  sort -k 5 -n -r | head -n 12 | awk '{print $3,$1,$5/1024,"MB",$9}'
-find / -type f  -ls  2>/dev/null | sort -k 7 -n -r| head -n 12 |awk '{print $5,$3,$7/1024/1024,"MB",$11}'
+echo "10 Largest Files:"
+echo "==============="
+#It search for all files in the system and sort it in the reverse order. That's why i take head command.
+find / -type f -exec du -h {} + 2>/dev/null | sort -h -r| head -n 10
 echo ""
 
