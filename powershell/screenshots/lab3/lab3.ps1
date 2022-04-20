@@ -1,0 +1,1 @@
+Get-CimInstance -ClassName Win32_NetworkAdapterConfiguration | Where-Object { $_.ipenabled -eq "True" } | ft Description, Index, IPAddress, IPSubnet, DNSDomain, DNSServerSearchOrder -Auto
